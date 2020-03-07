@@ -18,6 +18,7 @@ public class UserService {
         this.logger = Logger.getLogger(this.getClass().getName());
         this.userDAO = new UserDAOImpl();
         this.session = HibernateUtil.getSession();
+
     }
 
     public User findByUsernameAndPassword(String username, String password) {
