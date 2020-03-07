@@ -18,14 +18,14 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setTitle("Login Menu");
+        primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
     }
 
 
     public static void main(String[] args) {
-       // launch(args);
+        launch(args);
         createUser();
     }
 
