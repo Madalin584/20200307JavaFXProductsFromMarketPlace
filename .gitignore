@@ -29,3 +29,4 @@ hs_err_pid*
 # Custom ignore files #
 20200307JavaFXProductsFromMarketPlace.iml
 .idea
+target
