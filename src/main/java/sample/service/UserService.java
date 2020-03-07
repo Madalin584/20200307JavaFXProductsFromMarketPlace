@@ -24,7 +24,6 @@ public class UserService {
     public User findByUsernameAndPassword(String username, String password) {
         User user = null;
         try {
-            transaction = session.getTransaction();
             user = userDAO.findByUsernameAndPassword(username, password);
         } catch (HibernateException e) {
             logger.info(e.getMessage());
@@ -33,7 +32,6 @@ public class UserService {
             logger.info(e.getMessage());
             return null;
         }
-        transaction.commit();
         session.close();
         return user;
     }
