@@ -6,6 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.hql.spi.id.cte.CteValuesListBulkIdStrategy;
+import sample.model.User;
+import sample.service.HibernateUtil;
 
 import java.io.IOException;
 
@@ -21,7 +27,21 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        launch(args);
-        System.out.println("Hello");
+        //launch(args);
+        //System.out.println("Hello");
+        createUser();
+    }
+
+    public static void createUser() {
+        User user = new User("test", "test1pass");
+        Transaction transaction = null;
+        try {
+            Session session = HibernateUtil.getSession();
+            session.save(user);
+            transaction = session.beginTransaction();
+            transaction.commit();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
     }
 }
