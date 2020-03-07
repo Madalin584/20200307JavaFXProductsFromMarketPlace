@@ -25,12 +25,12 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-       // launch(args);
+        launch(args);
         createUser();
     }
 
     public static void createUser() {
-        User user = new User("ionel","ionel1","Ionel","Popescu","ionel@yahoo.com","employee");
+        User user = new User("ionel", "ionel1", "Ionel", "Popescu", "ionel@yahoo.com", "employee");
         Transaction transaction = null;
         try {
             Session session = HibernateUtil.getSession();
