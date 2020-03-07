@@ -1,7 +1,6 @@
 package sample;
 
 import javafx.application.Application;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -9,7 +8,6 @@ import javafx.stage.Stage;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.hql.spi.id.cte.CteValuesListBulkIdStrategy;
 import sample.model.User;
 import sample.service.HibernateUtil;
 
@@ -27,8 +25,7 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        //launch(args);
-        //System.out.println("Hello");
+        launch(args);
         createUser();
     }
 

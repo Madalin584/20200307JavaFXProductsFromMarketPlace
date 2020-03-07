@@ -19,7 +19,7 @@ public class HibernateUtil {
      * @return new session
      */
     public static Session getSession() {
-        logger.info("Sesiunea a fost creata");
+        logger.info("Session created");
         return getSessionFactory().openSession();
     }
 
@@ -38,7 +38,7 @@ public class HibernateUtil {
                     .applySettings(configuration.getProperties()).build();
             sessionFactory = configuration.buildSessionFactory(serviceRegistry);
         }
-        logger.info("Session factory a fost creat");
+        logger.info("Session factory was created");
         return sessionFactory;
     }
 
@@ -55,7 +55,7 @@ public class HibernateUtil {
         settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
         settings.put(Environment.HBM2DDL_AUTO, "update");
         configuration.setProperties(settings);
-        logger.info("A returnat configuratia");
+        logger.info("Configuration was returned");
         return configuration;
     }
 }
