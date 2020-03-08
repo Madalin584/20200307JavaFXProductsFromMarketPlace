@@ -8,11 +8,13 @@ import javafx.stage.Stage;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import sample.dao.ProductDAOImpl;
 import sample.model.Product;
 import sample.model.User;
 import sample.service.HibernateUtil;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Main extends Application {
 
@@ -27,6 +29,9 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+        //ProductDAOImpl productDAO = new ProductDAOImpl();
+        ///List<Product> productList = productDAO.getAll();
+        //productList.toString();
     }
 
     public static void createUser() {
