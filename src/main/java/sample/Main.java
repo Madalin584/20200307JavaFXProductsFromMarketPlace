@@ -27,7 +27,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
-//        createProduct();
     }
 
     public static void createUser() {
