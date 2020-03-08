@@ -27,7 +27,7 @@ public class Controller {
         if (user == null) {
             System.out.println("Login fail");
         }else {
-            Parent root = FXMLLoader.load(getClass().getResource("/goodby.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/scene/goodby.fxml"));
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -35,7 +35,7 @@ public class Controller {
 
     }
     public void pressme(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/goodby.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/scene/goodby.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
