@@ -65,7 +65,7 @@
                   <Insets left="150.0" right="150.0" top="70.0" />
                </VBox.margin>
             </TextField>
-            <PasswordField fx:id="pass" alignment="TOP_LEFT" prefHeight="26.0" prefWidth="83.0" promptText="int pass">
+            <PasswordField fx:id="password" alignment="TOP_LEFT" prefHeight="26.0" prefWidth="83.0" promptText="int pass">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

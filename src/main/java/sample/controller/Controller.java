@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.model.User;
+import sample.service.UserService;
 
 import java.io.IOException;
 
@@ -18,9 +20,18 @@ public class Controller {
     @FXML
     private TextField username;
     @FXML
-    private PasswordField pass;
-    public void loginIsPressed(ActionEvent event){
-
+    private PasswordField password;
+    public void loginIsPressed(ActionEvent event) throws IOException {
+        UserService userService = new UserService();
+        User user = userService.findByUsernameAndPassword(username.getText(), password.getText());
+        if (user == null) {
+            System.out.println("Login fail");
+        }else {
+            Parent root = FXMLLoader.load(getClass().getResource("/goodby.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();        }
 
     }
     public void pressme(ActionEvent event) throws IOException {
