@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
 import javax.persistence.*;
 
@@ -13,22 +12,16 @@ import javax.persistence.*;
 @Setter
 @ToString
 @NoArgsConstructor
-
 public class Product {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
     @Column
     private String name;
-
     @Column
     private int price;
-
     @Column
     private int quantity;
-
     @Column
     private String description;
 
