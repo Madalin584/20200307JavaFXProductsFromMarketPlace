@@ -6,6 +6,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
+import sample.model.Product;
 import sample.model.User;
 
 import java.util.Properties;
@@ -31,6 +32,7 @@ public class HibernateUtil {
 
         //annotated classes
         configuration.addAnnotatedClass(User.class);
+        configuration.addAnnotatedClass(Product.class);
 
         //singleton
         if (sessionFactory == null) {

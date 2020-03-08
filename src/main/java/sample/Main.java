@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import sample.model.Product;
 import sample.model.User;
 import sample.service.HibernateUtil;
 
@@ -26,6 +27,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+//        createProduct();
     }
 
     public static void createUser() {
@@ -39,5 +41,16 @@ public class Main extends Application {
         } catch (HibernateException e) {
             e.printStackTrace();
         }
+
+    }
+
+    public static void createProduct() {
+        Product product = new Product("Samsung", 2500, 2, "Samsung Galaxy S10");
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSession();
+        session.save(product);
+        transaction = session.beginTransaction();
+        transaction.commit();
     }
 }
+
