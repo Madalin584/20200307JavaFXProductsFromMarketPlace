@@ -1,8 +1,6 @@
 package sample.service;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import sample.dao.UserDAOImpl;
 import sample.model.User;
 
@@ -11,7 +9,6 @@ import java.util.logging.Logger;
 public class UserService {
     private Logger logger;
     private Session session;
-    private Transaction transaction;
     private UserDAOImpl userDAO;
 
     public UserService() {
@@ -24,10 +21,7 @@ public class UserService {
     public User findByUsernameAndPassword(String username, String password) {
         User user = null;
         try {
-            user = userDAO.findByUsernameAndPassword(username, password);
-        } catch (HibernateException e) {
-            logger.info(e.getMessage());
-            return null;
+           user = userDAO.findByUsernameAndPassword(username, password);
         } catch (Exception e) {
             logger.info(e.getMessage());
             return null;

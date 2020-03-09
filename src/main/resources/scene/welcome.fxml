@@ -15,10 +15,10 @@
          <children>
             <TableView fx:id="tableView" prefHeight="400.0" prefWidth="329.0">
                <columns>
-                  <TableColumn minWidth="0.0" prefWidth="84.0" text="Name" />
-                  <TableColumn prefWidth="78.4000244140625" resizable="false" text="Price" />
-                  <TableColumn prefWidth="76.79998779296875" text="Quantity" />
-                  <TableColumn prefWidth="88.79998779296875" text="Description" />
+                  <TableColumn fx:id="name" minWidth="0.0" prefWidth="84.0" text="Name" />
+                  <TableColumn fx:id="price" prefWidth="78.4000244140625" resizable="false" text="Price" />
+                  <TableColumn fx:id="quantity" prefWidth="76.79998779296875" text="Quantity" />
+                  <TableColumn fx:id="description" prefWidth="88.79998779296875" text="Description" />
                </columns>
                <HBox.margin>
                   <Insets />

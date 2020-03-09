@@ -11,7 +11,7 @@ public class ProductDAOImpl implements ProductDAO {
     private Session session = HibernateUtil.getSession();
 
     @Override
-    public List<Product> getAll() {
+    public List<Product> get() {
         String hql = "from Product";
         Query<Product> query = session.createQuery(hql, Product.class);
         return query.getResultList();

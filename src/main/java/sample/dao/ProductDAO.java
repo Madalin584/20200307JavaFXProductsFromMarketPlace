@@ -5,5 +5,5 @@ import sample.model.Product;
 import java.util.List;
 
 public interface ProductDAO {
-    List<Product> getAll();
+    List<Product> get();
 }
