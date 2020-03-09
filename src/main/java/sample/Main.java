@@ -41,7 +41,6 @@ public class Main extends Application {
         } catch (HibernateException e) {
             e.printStackTrace();
         }
-
     }
 
     //generated for testing db

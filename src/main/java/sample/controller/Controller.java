@@ -1,6 +1,9 @@
 package sample.controller;
 
 
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,7 +31,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
 public class Controller implements Initializable {
-    private Logger logger= Logger.getLogger(this.getClass().getName());
+    private Logger logger = Logger.getLogger(this.getClass().getName());
 
     //login fxml
     @FXML
@@ -40,6 +43,8 @@ public class Controller implements Initializable {
     //binding these variables with fx:id input from SceneBuilder
     @FXML
     private TableView<Product> tableView;
+    @FXML
+    private TableColumn<Product, Integer> id;
     @FXML
     private TableColumn<Product, String> description;
     @FXML
@@ -75,21 +80,16 @@ public class Controller implements Initializable {
     }
 
     ObservableList<Product> observableListOfProducts = FXCollections.observableArrayList();
+    ProductService productService = new ProductService();
+    List<Product> products = productService.getAll();
 
-    //TODO: this method will initialize our table, i'm not quite sure...
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //here we need all products from DB
-        logger.info("Inside initialize() method");
-        ProductService productService = new ProductService();
-        List<Product> products = productService.getAll();
         observableListOfProducts.addAll(products);
-        logger.warning("ObservableListOfProducts was added");
 
-        logger.warning("Above setting columns...");
-
-        description.setCellValueFactory(new PropertyValueFactory<>("description"));
+        id.setCellValueFactory(new PropertyValueFactory<>("id"));
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        description.setCellValueFactory(new PropertyValueFactory<>("description"));
         price.setCellValueFactory(new PropertyValueFactory<>("price"));
         quantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         tableView.setItems(observableListOfProducts);
