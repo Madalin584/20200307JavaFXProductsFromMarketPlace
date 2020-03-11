@@ -44,7 +44,7 @@
                   <Insets left="150.0" right="150.0" top="75.0" />
                </VBox.margin>
             </PasswordField>
-            <Button alignment="CENTER" graphicTextGap="6.0" mnemonicParsing="false" onAction="#loginIsPressed" prefHeight="28.0" prefWidth="182.0" text="Login" textAlignment="CENTER">
+            <Button alignment="CENTER" graphicTextGap="6.0" mnemonicParsing="false" onAction="#loginButtonIsPressed" prefHeight="28.0" prefWidth="182.0" text="Login" textAlignment="CENTER">
                <font>
                   <Font name="Arial" size="15.0" />
                </font>

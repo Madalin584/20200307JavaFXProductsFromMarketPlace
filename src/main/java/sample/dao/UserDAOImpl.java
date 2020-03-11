@@ -18,6 +18,8 @@ public class UserDAOImpl implements UserDAO {
 
     }
 
+    //calcul discount
+    //sumaTotala*(procentDiscount/100)
     @Override
     public void buyWithDiscount() {
 

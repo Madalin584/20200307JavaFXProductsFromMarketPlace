@@ -4,6 +4,7 @@ package sample.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,6 +12,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import sample.exceptions.UserException;
 import sample.model.Product;
@@ -56,7 +59,7 @@ public class Controller implements Initializable {
     @FXML
     private TableColumn<Product, Integer> quantity;
 
-    public void loginIsPressed(ActionEvent event) throws UserException, IOException {
+    public void loginButtonIsPressed(ActionEvent event) throws UserException, IOException {
         UserService userService = new UserService();
         User user = userService.findByUsernameAndPassword(username.getText(), password.getText());
         if (user != null) {
