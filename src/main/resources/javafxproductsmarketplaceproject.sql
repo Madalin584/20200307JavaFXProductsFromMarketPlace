@@ -8,6 +8,8 @@ describe product;
 
 alter table product drop id;
 alter table product add column id int not null primary key auto_increment;
+update product set quantity=quantity+1 where id=1;
+update product set quantity=quantity-1 where id=1;
 
 
 delete from user where id in(5,6,7);

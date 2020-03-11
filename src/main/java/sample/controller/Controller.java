@@ -1,9 +1,6 @@
 package sample.controller;
 
 
-import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,12 +10,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import sample.exceptions.UserException;
 import sample.model.Product;
 import sample.model.User;
 import sample.service.ProductService;
@@ -32,6 +26,14 @@ import java.util.logging.Logger;
 
 public class Controller implements Initializable {
     private Logger logger = Logger.getLogger(this.getClass().getName());
+
+    //onAction va apela o metoda(addQuantity()) din acest controller
+    //aceasta metoda va interactiona cu baza de date si
+    //va incrementa valoarea de la coloana "Quantity"
+    //daca operatiunea se executa cu succes va afisa un mesaj de confirmare
+    //altfel va afisa un mesaj de eroare
+    //dupa fiecare actualizare de produs tabelul ar trebui afisat
+    //din nou cu noile valori
 
     //login fxml
     @FXML
@@ -54,29 +56,23 @@ public class Controller implements Initializable {
     @FXML
     private TableColumn<Product, Integer> quantity;
 
-    public void loginIsPressed(ActionEvent event) throws IOException {
+    public void loginIsPressed(ActionEvent event) throws UserException, IOException {
         UserService userService = new UserService();
         User user = userService.findByUsernameAndPassword(username.getText(), password.getText());
-        if (user == null) {
-            System.out.println("Login fail");
-        } else {
+        if (user != null) {
             Parent root = FXMLLoader.load(getClass().getResource("/scene/welcome.fxml"));
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root, 600, 400);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
+            stage.setTitle("Products Page");
             stage.show();
+        } else {
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setHeaderText("Login fail");
+            errorAlert.setContentText("Please enter valid username and password");
+            errorAlert.showAndWait();
+            throw new UserException("User object is null");
         }
-
-    }
-
-    public void pressme(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/scene/goodby.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-
-
     }
 
     ObservableList<Product> observableListOfProducts = FXCollections.observableArrayList();
@@ -87,12 +83,12 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         observableListOfProducts.addAll(products);
 
-        id.setCellValueFactory(new PropertyValueFactory<>("id"));
-        name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        description.setCellValueFactory(new PropertyValueFactory<>("description"));
-        price.setCellValueFactory(new PropertyValueFactory<>("price"));
-        quantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-        tableView.setItems(observableListOfProducts);
+//        id.setCellValueFactory(new PropertyValueFactory<>("id"));
+//        name.setCellValueFactory(new PropertyValueFactory<>("name"));
+//        description.setCellValueFactory(new PropertyValueFactory<>("description"));
+//        price.setCellValueFactory(new PropertyValueFactory<>("price"));
+//        quantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+//        tableView.setItems(observableListOfProducts);
 
         logger.info("At the end of the method");
     }

@@ -18,8 +18,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/scene/sample.fxml"));
-        primaryStage.setTitle("Login Menu");
+        Parent root = FXMLLoader.load(getClass().getResource("/scene/login.fxml"));
+        primaryStage.setTitle("Login Page");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
     }

@@ -16,4 +16,19 @@ public class ProductDAOImpl implements ProductDAO {
         Query<Product> query = session.createQuery(hql, Product.class);
         return query.getResultList();
     }
+
+    @Override
+    public void add() {
+
+    }
+
+    @Override
+    public void remove() {
+
+    }
+
+    @Override
+    public void buy() {
+
+    }
 }

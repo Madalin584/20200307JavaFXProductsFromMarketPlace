@@ -17,4 +17,9 @@ public class UserDAOImpl implements UserDAO {
         return query.getSingleResult();
 
     }
+
+    @Override
+    public void buyWithDiscount() {
+
+    }
 }
