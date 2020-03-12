@@ -4,7 +4,6 @@ package sample.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,9 +11,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import sample.dto.ProductDTO;
 import sample.exceptions.UserException;
 import sample.model.Product;
 import sample.model.User;
@@ -47,17 +46,15 @@ public class Controller implements Initializable {
     //welcome fxml
     //binding these variables with fx:id input from SceneBuilder
     @FXML
-    private TableView<Product> tableView;
+    private TableView<ProductDTO> tableView;
     @FXML
-    private TableColumn<Product, Integer> id;
+    private TableColumn<ProductDTO, String> description;
     @FXML
-    private TableColumn<Product, String> description;
+    private TableColumn<ProductDTO, String> name;
     @FXML
-    private TableColumn<Product, String> name;
+    private TableColumn<ProductDTO, Integer> price;
     @FXML
-    private TableColumn<Product, Integer> price;
-    @FXML
-    private TableColumn<Product, Integer> quantity;
+    private TableColumn<ProductDTO, Integer> quantity;
 
     public void loginButtonIsPressed(ActionEvent event) throws UserException, IOException {
         UserService userService = new UserService();
@@ -78,20 +75,24 @@ public class Controller implements Initializable {
         }
     }
 
-    ObservableList<Product> observableListOfProducts = FXCollections.observableArrayList();
+
     ProductService productService = new ProductService();
-    List<Product> products = productService.getAll();
+
+    public ObservableList<ProductDTO> getAll() {
+        ObservableList<ProductDTO> observableListOfProducts = FXCollections.observableArrayList();
+        observableListOfProducts.addAll(new ProductDTO("Telefon2", 22, 4, "Description1"));
+        observableListOfProducts.addAll(new ProductDTO("Telefon2", 23, 2, "Description2"));
+        return observableListOfProducts;
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        observableListOfProducts.addAll(products);
-
-//        id.setCellValueFactory(new PropertyValueFactory<>("id"));
-//        name.setCellValueFactory(new PropertyValueFactory<>("name"));
-//        description.setCellValueFactory(new PropertyValueFactory<>("description"));
-//        price.setCellValueFactory(new PropertyValueFactory<>("price"));
-//        quantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-//        tableView.setItems(observableListOfProducts);
+        name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        description.setCellValueFactory(new PropertyValueFactory<>("description"));
+        price.setCellValueFactory(new PropertyValueFactory<>("price"));
+        quantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        tableView.setItems(getAll());
 
         logger.info("At the end of the method");
     }
