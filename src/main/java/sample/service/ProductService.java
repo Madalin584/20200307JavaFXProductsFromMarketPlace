@@ -1,19 +1,18 @@
 package sample.service;
 
+import lombok.extern.java.Log;
 import org.hibernate.Session;
 import sample.dao.ProductDAOImpl;
 import sample.model.Product;
 
 import java.util.List;
-import java.util.logging.Logger;
 
+@Log
 public class ProductService {
-    private Logger logger;
     private Session session;
     private ProductDAOImpl productDAO;
 
     public ProductService() {
-        this.logger = Logger.getLogger(ProductService.class.getName());
         this.productDAO = new ProductDAOImpl();
         this.session = HibernateUtil.getSession();
     }
@@ -24,7 +23,7 @@ public class ProductService {
         try {
             products = productDAO.get();
         } catch (Exception e) {
-            logger.warning(e.getMessage());
+            log.warning(e.getMessage());
         }
         session.close();
         return products;
