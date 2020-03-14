@@ -12,7 +12,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import lombok.extern.java.Log;
-import sample.exceptions.UserException;
 import sample.model.User;
 import sample.service.UserService;
 
@@ -25,7 +24,7 @@ public class LoginController {
     @FXML
     private PasswordField password;
 
-    public void loginButtonIsPressed(ActionEvent event) throws UserException, IOException {
+    public void loginButtonIsPressed(ActionEvent event) throws IOException {
         UserService userService = new UserService();
         User user = userService.findByUsernameAndPassword(username.getText(), password.getText());
         if (user != null) {
@@ -40,7 +39,6 @@ public class LoginController {
             errorAlert.setHeaderText("Login fail");
             errorAlert.setContentText("Please enter valid username and password");
             errorAlert.showAndWait();
-            throw new UserException("User object is null");
         }
     }
 }

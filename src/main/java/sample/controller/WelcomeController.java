@@ -16,16 +16,6 @@ import java.util.ResourceBundle;
 
 @Log
 public class WelcomeController implements Initializable {
-    //onAction va apela o metoda(addQuantity()) din acest controller
-    //aceasta metoda va interactiona cu baza de date si
-    //va incrementa valoarea de la coloana "Quantity"
-    //daca operatiunea se executa cu succes va afisa un mesaj de confirmare
-    //altfel va afisa un mesaj de eroare
-    //dupa fiecare actualizare de produs tabelul ar trebui afisat
-    //din nou cu noile valori
-
-    //welcome fxml
-    //binding these variables with fx:id input from SceneBuilder
     @FXML
     private TableView<Product> tableView;
     @FXML
@@ -44,15 +34,12 @@ public class WelcomeController implements Initializable {
         return observableListOfProducts;
     }
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        tableView.setItems(getAll());
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
         price.setCellValueFactory(new PropertyValueFactory<>("price"));
         quantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-        tableView.setItems(getAll());
-
-        log.info("At the end of the method");
     }
 }

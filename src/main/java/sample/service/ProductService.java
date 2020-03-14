@@ -21,7 +21,7 @@ public class ProductService {
     public List<Product> getAll() {
         List<Product> products = null;
         try {
-            products = productDAO.get();
+            products = productDAO.getAllProducts();
         } catch (Exception e) {
             log.warning(e.getMessage());
         }
