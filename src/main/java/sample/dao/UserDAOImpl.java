@@ -17,4 +17,11 @@ public class UserDAOImpl implements UserDAO {
         return query.getSingleResult();
 
     }
+
+    //calcul discount
+    //sumaTotala*(procentDiscount/100)
+    @Override
+    public void buyWithDiscount() {
+
+    }
 }
