@@ -9,8 +9,7 @@ public interface ProductDAO {
 
     void add(Product product);
 
-    //delete by ID or by Name ???
-    void remove();
+    void remove(Integer id);
 
     void buy(Product product);
 }
