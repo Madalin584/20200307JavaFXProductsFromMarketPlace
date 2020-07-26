@@ -18,17 +18,17 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public void add() {
-
+    public void add(Product product) {
+        System.out.println("OK");
     }
 
     @Override
-    public void remove() {
-
+    public void remove(Integer id) {
+        System.out.println("OK");
     }
 
     @Override
-    public void buy() {
-
+    public void buy(Product product) {
+        System.out.println("OK");
     }
 }
